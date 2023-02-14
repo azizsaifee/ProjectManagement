@@ -138,7 +138,6 @@ extension ViewAfterDetailsVC{
         }
         else if let selectedItem = dataSource.itemIdentifier(for: indexPath)?.title {
             title = selectedItem
-            print("Selected cell title: \(title!)")
         }
         self.navigationController?.pushViewController(contentVC, animated: true)
         ContentVC.stringForTitle = title

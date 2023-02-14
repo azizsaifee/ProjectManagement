@@ -193,9 +193,6 @@
 		184453742993C62600600603 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				EDF20514299B693B00A932CB /* DTB */,
-				EDF20513299B693200A932CB /* ART */,
-				EDF20512299B691D00A932CB /* Stanbic */,
 				184453752993C63000600603 /* EcoBank */,
 			);
 			path = iOS;
@@ -240,7 +237,6 @@
 				18720CF12999F9EB00517C68 /* CoreData */,
 				184D1395298CF0AA000FF810 /* Model */,
 				184D1396298CF0B0000FF810 /* View */,
-				EDF20510299B639300A932CB /* ViewModel */,
 				184D1399298CF113000FF810 /* Storyboard */,
 				ED61E4C9299B6DDB00C965DF /* FaltuCode.swift */,
 			);
@@ -335,13 +331,6 @@
 			path = iOS;
 			sourceTree = "<group>";
 		};
-		EDF20510299B639300A932CB /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		EDF20511299B659200A932CB /* Content */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,27 +338,6 @@
 				6945B9F3299645F80004CBAB /* OnBoardinVCCollectionViewCell.swift */,
 			);
 			path = Content;
-			sourceTree = "<group>";
-		};
-		EDF20512299B691D00A932CB /* Stanbic */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Stanbic;
-			sourceTree = "<group>";
-		};
-		EDF20513299B693200A932CB /* ART */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ART;
-			sourceTree = "<group>";
-		};
-		EDF20514299B693B00A932CB /* DTB */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DTB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
