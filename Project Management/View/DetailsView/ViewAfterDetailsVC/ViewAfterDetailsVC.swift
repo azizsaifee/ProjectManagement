@@ -7,6 +7,7 @@
 
 import UIKit
 
+// Enums and sections.
 enum Section: Int, CaseIterable {
     case outline
 }
