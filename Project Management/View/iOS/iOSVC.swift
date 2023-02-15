@@ -4,11 +4,10 @@
 //
 //  Created by Apple on 07/02/23.
 //
+
 import Foundation
 import UIKit
 import CoreMedia
-
-
 
 class iOSVC: UIViewController {
     
@@ -34,41 +33,74 @@ class iOSVC: UIViewController {
     // MARK: - Variables
     var itemSection = ItemSection()
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
+    private var collectionView: UICollectionView! = nil
     
     // MARK: IBOutlets
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var labelForTittle: UILabel!
+    //@IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var labelForTitle: UILabel!
     
     // MARK: View Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
-        labelForTittle.text = "iosApps"
+        labelForTitle.text = "iOS Apps"
     }
     
     // MARK: - Required Methods
+    
     private func createLayout() -> UICollectionViewLayout{
-        let sectionProvider = {(sectionIndex: Int, layout: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-            guard let sectionKind = Section(rawValue: sectionIndex) else { return nil }
-            let section: NSCollectionLayoutSection
-            switch sectionKind {
-            case .outline:
-                let configution = UICollectionLayoutListConfiguration(appearance: .plain)
-                section = NSCollectionLayoutSection.list(using: configution, layoutEnvironment: layout)
+            let sectionProvider = {(sectionIndex: Int, layout: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+                guard let sectionKind = Section(rawValue: sectionIndex) else { return nil }
+                let section: NSCollectionLayoutSection
+                switch sectionKind {
+                case .outline:
+                    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(100))
+                    let item = NSCollectionLayoutItem(layoutSize: itemSize)
+                    item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+                    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(100))
+                    let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+                    section = NSCollectionLayoutSection(group: group)
+                    section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+                }
+                return section
             }
-            return section
+            return UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)
         }
-        return UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)
-    }
+
     
     private func configureCollectionView() {
+        
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(collectionView)
+        
+        labelForTitle.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        let constraints = [
+            collectionView.topAnchor.constraint(equalTo: labelForTitle.bottomAnchor, constant: 10),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
         collectionView.delegate = self
+        
+        // Creating Layout For the collectionView.
         collectionView.collectionViewLayout = createLayout()
         
         let categoryCellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, Item> { cell, _, item in
             var configuration = cell.defaultContentConfiguration()
             configuration.text = item.title
-            configuration.textProperties.font = .preferredFont(forTextStyle: .title2)
+            configuration.textProperties.font = UIFont.systemFont(ofSize: 22, weight: .regular, width: .standard)
+            configuration.textProperties.color = .black
+            if item.title == "Eco Bank" {
+                configuration.image = UIImage(named: item.Appicon ?? "")
+                configuration.imageProperties.maximumSize = CGSize(width: 80, height: 45)
+            } else {
+                configuration.image = UIImage(named: item.Appicon ?? "")
+                configuration.imageProperties.maximumSize = CGSize(width: 45, height: 40)
+            }
+            
             cell.contentConfiguration = configuration
             
             if configuration.text == "DTB"{
@@ -80,6 +112,9 @@ class iOSVC: UIViewController {
         let categorySubCellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, Item> { cell, _, item in
             var configuration = cell.defaultContentConfiguration()
             configuration.text = item.symbol?.title
+            configuration.textProperties.font = UIFont.systemFont(ofSize: 18, weight: .regular, width: .standard)
+            configuration.image = UIImage(named: item.symbol?.Appicon ?? "")
+            configuration.imageProperties.maximumSize = CGSize(width: 35, height: 35)
             cell.contentConfiguration = configuration
         }
         

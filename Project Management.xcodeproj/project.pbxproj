@@ -33,10 +33,9 @@
 		18720CF52999FA0C00517C68 /* AppDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18720CF42999FA0C00517C68 /* AppDataRepository.swift */; };
 		18720CF82999FB4100517C68 /* AppCoreData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18720CF62999FB4100517C68 /* AppCoreData+CoreDataClass.swift */; };
 		18720CF92999FB4100517C68 /* AppCoreData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18720CF72999FB4100517C68 /* AppCoreData+CoreDataProperties.swift */; };
+		18A8E41B299CB0E500D70967 /* DemoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8E41A299CB0E500D70967 /* DemoVC.swift */; };
 		18C293F229927C8F00C7861D /* iOSVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C293F129927C8F00C7861D /* iOSVC.swift */; };
 		6945B9F4299645F90004CBAB /* OnBoardinVCCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6945B9F3299645F80004CBAB /* OnBoardinVCCollectionViewCell.swift */; };
-		696E250A2994CEE10082DAFD /* iosCollectionViewMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696E25082994CEE10082DAFD /* iosCollectionViewMainCell.swift */; };
-		696E250B2994CEE10082DAFD /* iosCollectionViewMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 696E25092994CEE10082DAFD /* iosCollectionViewMainCell.xib */; };
 		699CAEDD2994DD1D0050AEC2 /* dataFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699CAEDC2994DD1D0050AEC2 /* dataFile.swift */; };
 		ED61E4CA299B6DDB00C965DF /* FaltuCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED61E4C9299B6DDB00C965DF /* FaltuCode.swift */; };
 /* End PBXBuildFile section */
@@ -89,10 +88,9 @@
 		18720CF42999FA0C00517C68 /* AppDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataRepository.swift; sourceTree = "<group>"; };
 		18720CF62999FB4100517C68 /* AppCoreData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppCoreData+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		18720CF72999FB4100517C68 /* AppCoreData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppCoreData+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		18A8E41A299CB0E500D70967 /* DemoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoVC.swift; sourceTree = "<group>"; };
 		18C293F129927C8F00C7861D /* iOSVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSVC.swift; sourceTree = "<group>"; };
 		6945B9F3299645F80004CBAB /* OnBoardinVCCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardinVCCollectionViewCell.swift; sourceTree = "<group>"; };
-		696E25082994CEE10082DAFD /* iosCollectionViewMainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosCollectionViewMainCell.swift; sourceTree = "<group>"; };
-		696E25092994CEE10082DAFD /* iosCollectionViewMainCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = iosCollectionViewMainCell.xib; sourceTree = "<group>"; };
 		699CAEDC2994DD1D0050AEC2 /* dataFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataFile.swift; sourceTree = "<group>"; };
 		ED61E4C9299B6DDB00C965DF /* FaltuCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaltuCode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -280,6 +278,7 @@
 				1844536029938AA000600603 /* Flutter */,
 				1844536529938C2C00600603 /* Website */,
 				1844536429938C2500600603 /* Webapp */,
+				18A8E41A299CB0E500D70967 /* DemoVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -301,15 +300,6 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
-		1861596229936D42004A76FC /* iOSCellClass */ = {
-			isa = PBXGroup;
-			children = (
-				696E25082994CEE10082DAFD /* iosCollectionViewMainCell.swift */,
-				696E25092994CEE10082DAFD /* iosCollectionViewMainCell.xib */,
-			);
-			path = iOSCellClass;
-			sourceTree = "<group>";
-		};
 		18720CF12999F9EB00517C68 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,7 +316,6 @@
 			children = (
 				18C293F129927C8F00C7861D /* iOSVC.swift */,
 				699CAEDC2994DD1D0050AEC2 /* dataFile.swift */,
-				1861596229936D42004A76FC /* iOSCellClass */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -445,7 +434,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				184D1372298CEF18000FF810 /* LaunchScreen.storyboard in Resources */,
-				696E250B2994CEE10082DAFD /* iosCollectionViewMainCell.xib in Resources */,
 				184D136F298CEF18000FF810 /* Assets.xcassets in Resources */,
 				1844535C2993807100600603 /* AndroidTableViewCell.xib in Resources */,
 				184D136A298CEF17000FF810 /* Main.storyboard in Resources */,
@@ -479,7 +467,6 @@
 				18720CF82999FB4100517C68 /* AppCoreData+CoreDataClass.swift in Sources */,
 				1844536929938C5F00600603 /* WebsiteVC.swift in Sources */,
 				1844535B2993807100600603 /* AndroidTableViewCell.swift in Sources */,
-				696E250A2994CEE10082DAFD /* iosCollectionViewMainCell.swift in Sources */,
 				1844536F2993BCFD00600603 /* ViewAfterDetailsVC.swift in Sources */,
 				18720CF52999FA0C00517C68 /* AppDataRepository.swift in Sources */,
 				184D136D298CEF17000FF810 /* Project_Management.xcdatamodeld in Sources */,
@@ -496,6 +483,7 @@
 				1844535729937F7600600603 /* AndroidVC.swift in Sources */,
 				1844536C2993A68C00600603 /* DetailsVC.swift in Sources */,
 				18720CF32999FA0000517C68 /* PersistentStorage.swift in Sources */,
+				18A8E41B299CB0E500D70967 /* DemoVC.swift in Sources */,
 				18C293F229927C8F00C7861D /* iOSVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
