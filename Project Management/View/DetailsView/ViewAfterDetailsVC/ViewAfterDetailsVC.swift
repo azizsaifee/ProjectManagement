@@ -60,7 +60,7 @@ class ViewAfterDetailsVC: UIViewController, UICollectionViewDelegate {
         let categoryCellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, Item> { cell, _, item in
             var configuration = cell.defaultContentConfiguration()
             configuration.text = item.title
-            configuration.textProperties.font = .preferredFont(forTextStyle: .title2)
+            configuration.textProperties.font = .preferredFont(forTextStyle: .title3)
             cell.contentConfiguration = configuration
             let headerDisclosureOption = UICellAccessory.OutlineDisclosureOptions(style: .header)
             cell.accessories = [.outlineDisclosure(options:headerDisclosureOption)]
@@ -69,6 +69,7 @@ class ViewAfterDetailsVC: UIViewController, UICollectionViewDelegate {
         let categorySubCellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, Item> { cell, _, item in
             var configuration = cell.defaultContentConfiguration()
             configuration.text = item.subtitle
+            configuration.textProperties.font = .preferredFont(forTextStyle: .subheadline)
             cell.contentConfiguration = configuration
         }
         
@@ -78,7 +79,6 @@ class ViewAfterDetailsVC: UIViewController, UICollectionViewDelegate {
                 
                 switch section {
                 case .outline:
-                    
                     if (item.isChild) {
                         return collectionView.dequeueConfiguredReusableCell(using: categoryCellRegistration, for: indexPath, item: item)
                     } else {

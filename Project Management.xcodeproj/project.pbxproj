@@ -33,9 +33,10 @@
 		18720CF52999FA0C00517C68 /* AppDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18720CF42999FA0C00517C68 /* AppDataRepository.swift */; };
 		18720CF82999FB4100517C68 /* AppCoreData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18720CF62999FB4100517C68 /* AppCoreData+CoreDataClass.swift */; };
 		18720CF92999FB4100517C68 /* AppCoreData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18720CF72999FB4100517C68 /* AppCoreData+CoreDataProperties.swift */; };
+		189C154E299E6D01009EDD14 /* ContentVCCellClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189C154C299E6D01009EDD14 /* ContentVCCellClass.swift */; };
+		189C154F299E6D01009EDD14 /* ContentVCCellClass.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189C154D299E6D01009EDD14 /* ContentVCCellClass.xib */; };
 		18A8E41B299CB0E500D70967 /* DemoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8E41A299CB0E500D70967 /* DemoVC.swift */; };
 		18C293F229927C8F00C7861D /* iOSVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C293F129927C8F00C7861D /* iOSVC.swift */; };
-		6945B9F4299645F90004CBAB /* OnBoardinVCCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6945B9F3299645F80004CBAB /* OnBoardinVCCollectionViewCell.swift */; };
 		699CAEDD2994DD1D0050AEC2 /* dataFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699CAEDC2994DD1D0050AEC2 /* dataFile.swift */; };
 		ED61E4CA299B6DDB00C965DF /* FaltuCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED61E4C9299B6DDB00C965DF /* FaltuCode.swift */; };
 /* End PBXBuildFile section */
@@ -88,9 +89,10 @@
 		18720CF42999FA0C00517C68 /* AppDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataRepository.swift; sourceTree = "<group>"; };
 		18720CF62999FB4100517C68 /* AppCoreData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppCoreData+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		18720CF72999FB4100517C68 /* AppCoreData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppCoreData+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		189C154C299E6D01009EDD14 /* ContentVCCellClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentVCCellClass.swift; sourceTree = "<group>"; };
+		189C154D299E6D01009EDD14 /* ContentVCCellClass.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentVCCellClass.xib; sourceTree = "<group>"; };
 		18A8E41A299CB0E500D70967 /* DemoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoVC.swift; sourceTree = "<group>"; };
 		18C293F129927C8F00C7861D /* iOSVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSVC.swift; sourceTree = "<group>"; };
-		6945B9F3299645F80004CBAB /* OnBoardinVCCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardinVCCollectionViewCell.swift; sourceTree = "<group>"; };
 		699CAEDC2994DD1D0050AEC2 /* dataFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataFile.swift; sourceTree = "<group>"; };
 		ED61E4C9299B6DDB00C965DF /* FaltuCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaltuCode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -324,7 +326,8 @@
 			isa = PBXGroup;
 			children = (
 				1844537A2993D7FF00600603 /* ContentVC.swift */,
-				6945B9F3299645F80004CBAB /* OnBoardinVCCollectionViewCell.swift */,
+				189C154C299E6D01009EDD14 /* ContentVCCellClass.swift */,
+				189C154D299E6D01009EDD14 /* ContentVCCellClass.xib */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				184D1372298CEF18000FF810 /* LaunchScreen.storyboard in Resources */,
+				189C154F299E6D01009EDD14 /* ContentVCCellClass.xib in Resources */,
 				184D136F298CEF18000FF810 /* Assets.xcassets in Resources */,
 				1844535C2993807100600603 /* AndroidTableViewCell.xib in Resources */,
 				184D136A298CEF17000FF810 /* Main.storyboard in Resources */,
@@ -466,6 +470,7 @@
 				184D1363298CEF17000FF810 /* AppDelegate.swift in Sources */,
 				18720CF82999FB4100517C68 /* AppCoreData+CoreDataClass.swift in Sources */,
 				1844536929938C5F00600603 /* WebsiteVC.swift in Sources */,
+				189C154E299E6D01009EDD14 /* ContentVCCellClass.swift in Sources */,
 				1844535B2993807100600603 /* AndroidTableViewCell.swift in Sources */,
 				1844536F2993BCFD00600603 /* ViewAfterDetailsVC.swift in Sources */,
 				18720CF52999FA0C00517C68 /* AppDataRepository.swift in Sources */,
@@ -477,7 +482,6 @@
 				1844536729938C4B00600603 /* WebappVC.swift in Sources */,
 				699CAEDD2994DD1D0050AEC2 /* dataFile.swift in Sources */,
 				1844536329938AC200600603 /* FlutterVC.swift in Sources */,
-				6945B9F4299645F90004CBAB /* OnBoardinVCCollectionViewCell.swift in Sources */,
 				184453772993C64E00600603 /* DataForEcoBank.swift in Sources */,
 				184D1365298CEF17000FF810 /* SceneDelegate.swift in Sources */,
 				1844535729937F7600600603 /* AndroidVC.swift in Sources */,

@@ -61,7 +61,7 @@ class ContentVC: UIViewController,QLPreviewControllerDataSource {
         playerLayer.videoGravity = .resizeAspect
         view.layer.addSublayer(playerLayer)
         player?.appliesMediaSelectionCriteriaAutomatically = true
-        let videoURL = URL(fileURLWithPath: "/Users/apple/Downloads/Onboarding.mp4")
+        let videoURL = URL(fileURLWithPath: "https://drive.google.com/file/d/1oeDWNOxspP8Cd2W_5X1uR0A093ORrkzH/view?usp=sharing")
         let playerItem = AVPlayerItem(url: videoURL)
         player?.replaceCurrentItem(with: playerItem)
         player?.play()

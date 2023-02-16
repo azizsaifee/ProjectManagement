@@ -91,7 +91,7 @@ class iOSVC: UIViewController {
         let categoryCellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, Item> { cell, _, item in
             var configuration = cell.defaultContentConfiguration()
             configuration.text = item.title
-            configuration.textProperties.font = UIFont.systemFont(ofSize: 22, weight: .regular, width: .standard)
+            configuration.textProperties.font = .preferredFont(forTextStyle: .title2)
             configuration.textProperties.color = .black
             if item.title == "Eco Bank" {
                 configuration.image = UIImage(named: item.Appicon ?? "")
@@ -112,7 +112,7 @@ class iOSVC: UIViewController {
         let categorySubCellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, Item> { cell, _, item in
             var configuration = cell.defaultContentConfiguration()
             configuration.text = item.symbol?.title
-            configuration.textProperties.font = UIFont.systemFont(ofSize: 18, weight: .regular, width: .standard)
+            configuration.textProperties.font = .preferredFont(forTextStyle: .title3)
             configuration.image = UIImage(named: item.symbol?.Appicon ?? "")
             configuration.imageProperties.maximumSize = CGSize(width: 35, height: 35)
             cell.contentConfiguration = configuration

@@ -12,7 +12,7 @@ class DetailsVC: UIViewController {
     static var objRepository = AppDataRepository()
     static var stringForTitle: String?
     
-    @IBOutlet var ViewBelowFloatingViewCollection: [UIView]!
+    @IBOutlet weak var viewBelowFloatingViews: UIView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var labelForTittle: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -21,23 +21,26 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var lblCredentialsView: UIView!
     @IBOutlet weak var lblIssuesView: UIView!
     
+    @IBOutlet var floatingViews: [UIView]!
+    
     @IBAction func backButtonAction(_ sender: UIButton) {
         sender.setTitle("<iosApps", for: .normal)
         self.navigationController?.popViewController(animated: true)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         labelForTittle.text = DetailsVC.stringForTitle
-        designingViews()
+        design()
         handlingClicksOnFloatingView()
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
         headerView.backgroundColor = .white
         
         let headerLabel = UILabel(frame: CGRect(x: 10, y: 0, width: headerView.frame.width - 20, height: headerView.frame.height))
+        headerLabel.textAlignment = .center
         headerLabel.text = "Recents"
         headerLabel.font = UIFont.boldSystemFont(ofSize: 24)
         headerLabel.textColor = .black
-        
         headerView.addSubview(headerLabel)
         tableView.tableHeaderView = headerView
         
@@ -55,37 +58,59 @@ class DetailsVC: UIViewController {
         }
     }
     
-    func designingViews() {
-        for view in ViewBelowFloatingViewCollection {
-            view.subviews.first!.layer.borderWidth = 2
-            view.subviews.first!.layer.borderColor = UIColor.black.cgColor
-            view.subviews.first!.layer.cornerRadius = 40
-            view.subviews.first!.clipsToBounds = true
+    func design() {
+        for view in floatingViews {
+            view.layer.shadowColor = UIColor.black.cgColor
+            view.layer.shadowOpacity = 0.5
+            view.layer.shadowOffset = CGSize(width: 5, height: 5)
+            view.layer.shadowRadius = 5
+            view.layer.cornerRadius = 40
             self.animate(with: view)
         }
     }
     
-    func animate(with viewBelowfloatingView: UIView) {
+    func animate(with floatingViews: UIView) {
         let animator = UIViewPropertyAnimator(duration: 4.0, curve: .linear) {
-            viewBelowfloatingView.subviews.first!.center = self.getRandomPoint(of: viewBelowfloatingView)
+            floatingViews.center = self.getRandomPoint(of: self.viewBelowFloatingViews)
         }
         animator.startAnimation()
-        animator.addCompletion {
-            position in
+        animator.addCompletion { position in
             if position == .end {
-                self.animate(with: viewBelowfloatingView)
+                self.animate(with: floatingViews)
             }
         }
     }
-    
+
+    var count = 0
     func getRandomPoint(of view: UIView) -> CGPoint {
-        let screenWidth = view.bounds.width
-        let screenHeight = view.bounds.height
-        
-        let randomX = CGFloat.random(in: 40...screenWidth - 40)
-        let randomY = CGFloat.random(in: 40...screenHeight - 40)
-        
-        return CGPoint(x: randomX, y: randomY)
+        let viewWidth = view.bounds.width
+        let viewHeight = view.bounds.height
+        count += 1
+        switch count {
+        case 1:
+            // Quadrant 1
+            let randomX = CGFloat.random(in: 40...(viewWidth/2 - 40))
+            let randomY = CGFloat.random(in: 40...(viewHeight/2 - 40))
+            return CGPoint(x: randomX, y: randomY)
+        case 2:
+            // Quadrant 2
+            let randomX = CGFloat.random(in: 40...(viewWidth/2 - 40))
+            let randomY = CGFloat.random(in: (viewHeight/2 + 40)...(viewHeight - 40))
+            return CGPoint(x: randomX, y: randomY)
+        case 3:
+            // Quadrant 3
+            let randomX = CGFloat.random(in: (viewWidth/2 + 40)...viewWidth - 40)
+            let randomY = CGFloat.random(in: 40...(viewHeight/2) - 40)
+            return CGPoint(x: randomX, y: randomY)
+        case 4:
+            // Quadrant 4
+            count = 0
+            let randomX = CGFloat.random(in: (viewWidth/2 + 40)...viewWidth - 40)
+            let randomY = CGFloat.random(in: (viewHeight/2 + 40)...(viewHeight - 40))
+            return CGPoint(x: randomX, y: randomY)
+        default:
+            return CGPoint(x: 0, y: 0)
+        }
     }
     
     func handlingClicksOnFloatingView() {
@@ -111,25 +136,22 @@ class DetailsVC: UIViewController {
     }
     
     @objc func handleTap(sender: UITapGestureRecognizer) {
-        let viewInsideDetailsVC = self.storyboard?.instantiateViewController(withIdentifier: "ViewInsideDetailsVC") as! ViewAfterDetailsVC
+        let viewAfterDetailsVC = self.storyboard?.instantiateViewController(withIdentifier: "ViewAfterDetailsVC") as! ViewAfterDetailsVC
         switch sender.name {
         case "documentation" :
             ViewAfterDetailsVC.stringForTitle = "Documentation"
-            self.navigationController?.pushViewController(viewInsideDetailsVC, animated: true)
-            
+            self.navigationController?.pushViewController(viewAfterDetailsVC, animated: true)
         case "features" :
-            self.navigationController?.pushViewController(viewInsideDetailsVC, animated: true)
+            self.navigationController?.pushViewController(viewAfterDetailsVC, animated: true)
             ViewAfterDetailsVC.stringForTitle = "Features"
         case "credentials" :
-            self.navigationController?.pushViewController(viewInsideDetailsVC, animated: true)
+            self.navigationController?.pushViewController(viewAfterDetailsVC, animated: true)
             ViewAfterDetailsVC.stringForTitle = "Credentials"
         case "issues" :
-            self.navigationController?.pushViewController(viewInsideDetailsVC, animated: true)
+            self.navigationController?.pushViewController(viewAfterDetailsVC, animated: true)
             ViewAfterDetailsVC.stringForTitle = "Issues"
-        case .none:
-            print("none")
-        case .some(_):
-            print("none")
+        default:
+            print("None was found!")
         }
     }
 }
