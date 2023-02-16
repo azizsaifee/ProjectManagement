@@ -8,7 +8,7 @@
 import UIKit
 
 class DetailsVC: UIViewController {
-    
+    //demo
     static var objRepository = AppDataRepository()
     static var stringForTitle: String?
     
