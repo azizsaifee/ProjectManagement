@@ -39,6 +39,8 @@ struct AppDataRepository: DataRepository {
     func getData(byIdentifier id: String) -> AppCoreData?
     {
         let fetchRequest = NSFetchRequest<AppCoreData>(entityName: "AppCoreData")
+       
+        
         let predicate = NSPredicate(format: "id==%@", id)
         
         fetchRequest.predicate = predicate

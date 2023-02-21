@@ -14,7 +14,6 @@ class ContentVC: UIViewController,QLPreviewControllerDataSource {
     
     // MARK: - Variables
     static var stringForTitle: String?
-    var player: AVPlayer?
     var pdfViewObject: PDFView = PDFView()
     var pdfDocumentationObject: PDFDocument = PDFDocument()
     var totalPages = 0
@@ -30,6 +29,9 @@ class ContentVC: UIViewController,QLPreviewControllerDataSource {
         super.viewDidLoad()
         labelForTittle.text = ContentVC.stringForTitle
         addContent()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(ContentVCCellClass.nib(), forCellWithReuseIdentifier: "ContentVCCellClass")
     }
     
     // MARK: - Required Methods
@@ -53,20 +55,7 @@ class ContentVC: UIViewController,QLPreviewControllerDataSource {
         let url = Bundle.main.url(forResource: "ayush", withExtension: "pdf")!
         return url as QLPreviewItem
     }
-    
-    func addPlayerToView(_ view: UIView) {
-        player = AVPlayer()
-        let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.frame = view.bounds
-        playerLayer.videoGravity = .resizeAspect
-        view.layer.addSublayer(playerLayer)
-        player?.appliesMediaSelectionCriteriaAutomatically = true
-        let videoURL = URL(fileURLWithPath: "https://drive.google.com/file/d/1oeDWNOxspP8Cd2W_5X1uR0A093ORrkzH/view?usp=sharing")
-        let playerItem = AVPlayerItem(url: videoURL)
-        player?.replaceCurrentItem(with: playerItem)
-        player?.play()
-    }
-    
+
     // MARK: - IBActions
     @IBAction func showPdfBtn(_ sender: Any) {
         let previewController = QLPreviewController()
@@ -76,5 +65,27 @@ class ContentVC: UIViewController,QLPreviewControllerDataSource {
 
     @IBAction func backButtonAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension ContentVC: UICollectionViewDelegate {
+    
+}
+
+extension ContentVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ContentVCCellClass", for: indexPath) as! ContentVCCellClass
+        cell.configure(with: indexPath.row)
+        return cell
+    }
+}
+
+extension ContentVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: view.bounds.width, height: 300)
     }
 }

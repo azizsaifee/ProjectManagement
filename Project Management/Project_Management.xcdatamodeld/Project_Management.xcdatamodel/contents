@@ -7,4 +7,12 @@
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="issues" optional="YES" attributeType="Transformable" customClassName="Issues"/>
     </entity>
+    <entity name="Questions" representedClassName="Questions" syncable="YES">
+        <attribute name="option1" optional="YES" attributeType="String"/>
+        <attribute name="option2" optional="YES" attributeType="String"/>
+        <attribute name="option3" optional="YES" attributeType="String"/>
+        <attribute name="option4" optional="YES" attributeType="String"/>
+        <attribute name="question" optional="YES" attributeType="String"/>
+        <attribute name="questionNo" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
 </model>

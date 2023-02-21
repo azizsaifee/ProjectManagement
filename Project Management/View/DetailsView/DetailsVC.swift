@@ -33,9 +33,25 @@ class DetailsVC: UIViewController {
         labelForTittle.text = DetailsVC.stringForTitle
         design()
         handlingClicksOnFloatingView()
+        addHeader()
+        loadData()
+    }
+    
+    func loadData() {
+        if DetailsVC.objRepository.get(byIdentifier: "EcoBank") == nil {
+            DetailsVC.objRepository.create(data: dataOfEcoBank)
+        } else {
+            if DetailsVC.objRepository.get(byIdentifier: "EcoBank")! != dataOfEcoBank {
+                let deleteSuccessOrNot = DetailsVC.objRepository.delete(byIdentifier: "EcoBank")
+                print(deleteSuccessOrNot)
+                DetailsVC.objRepository.create(data: dataOfEcoBank)
+            }
+        }
+    }
+    
+    func addHeader() {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
         headerView.backgroundColor = .white
-        
         let headerLabel = UILabel(frame: CGRect(x: 10, y: 0, width: headerView.frame.width - 20, height: headerView.frame.height))
         headerLabel.textAlignment = .center
         headerLabel.text = "Recents"
@@ -43,20 +59,8 @@ class DetailsVC: UIViewController {
         headerLabel.textColor = .black
         headerView.addSubview(headerLabel)
         tableView.tableHeaderView = headerView
-        
-        if DetailsVC.objRepository.get(byIdentifier: "EcoBank") == nil {
-            DetailsVC.objRepository.create(data: dataOfEcoBank)
-        } else {
-            if DetailsVC.objRepository.get(byIdentifier: "EcoBank")! != dataOfEcoBank {
-                print("Both are different")
-                let deleteSuccessOrNot = DetailsVC.objRepository.delete(byIdentifier: "EcoBank")
-                print(deleteSuccessOrNot)
-                DetailsVC.objRepository.create(data: dataOfEcoBank)
-            } else {
-                print("Both are equal.")
-            }
-        }
     }
+    
     
     func design() {
         for view in floatingViews {
